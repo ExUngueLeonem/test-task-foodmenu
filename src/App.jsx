@@ -16,7 +16,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<AuthPage />} />
-        <Route path="admin" element={<AdminMenuPage/>}/>
+        <Route path="admin/menu" element={<AdminMenuPage/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,11 @@
+.header_menu {
+    display: flex;
+    justify-content: space-between;
+
+    &__inner {
+        font-size: 40px;
+        display: block;
+        padding: 10px;
+    }
+}
+

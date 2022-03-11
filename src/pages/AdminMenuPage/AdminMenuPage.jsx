@@ -1,18 +1,13 @@
 import React from 'react';
 import styles from './AdminMenuPage.module.scss';
-/* styles. */
+import AdminHeader from '../../components/AdminHeader';
+
 
 const AdminMenuPage = () => {
     return (
         <div className={styles.container}>
             <div className={styles.flex_container}>
-
-                <div className={styles.header_menu}>
-                    <div className={styles.header_menu__inner}>Меню</div>
-                    <div className={styles.header_menu__inner}>Сотрудники</div>
-                    <div className={styles.header_menu__inner}>Заказы</div>
-                </div>
-
+            <AdminHeader/>
                 <input className={[styles.menu_input].join(' ')} type="text" placeholder='добавление продукта'></input>
                 
                 <div className={styles.menu_list}>
