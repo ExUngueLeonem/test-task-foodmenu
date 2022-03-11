@@ -3,3 +3,5 @@ npm i node-sass
 npm install --save normalize.css
 import 'normalize.css'
 
+npm install react-router-dom@6
+
