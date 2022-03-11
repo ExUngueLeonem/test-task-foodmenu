@@ -44,14 +44,17 @@
 }
 
 @mixin close {
-   
     position: absolute;
     right: 32px;
     top: 32px;
     width: 32px;
     height: 32px;
     opacity: 0.3;
-    
+    cursor: pointer;
+
+    transition: .3s;
+
+
     &:hover {
     opacity: 1;
     }
@@ -72,4 +75,22 @@
     &:after {
     transform: rotate(-45deg);
     }
+}
+
+@mixin put {
+    position: absolute;
+    right: 70px;
+    top: 65%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 35px;
+    opacity: 0.3;
+    cursor: pointer;
+
+    transition: .3s;
+
+    &:hover {
+      opacity: 1;
+    }
+  
 }
