@@ -1,0 +1,65 @@
+@import '../../style/mixins.scss';
+
+
+.container {
+    max-width: 1480px;
+    margin: 20px auto;
+    padding: 40px;
+    padding-top: 20px;
+    
+    border-radius: 15px; 
+    @include shadow;
+}
+
+.header_menu {
+    display: flex;
+    justify-content: space-between;
+
+    &__inner {
+        font-size: 40px;
+        display: block;
+        padding: 10px;
+    }
+}
+.menu_input {
+    width: 100%;
+    font-size: 18px;
+    @include input;
+}
+
+.menu_btn_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu_btn {
+    @include button_primary;
+    padding: 15px;
+    display: block;
+    font-size: 20px;
+    min-width: 250px;
+}
+
+.menu_list {
+    &__inner {
+        display: block;
+        padding: 10px;
+        border: 2px solid rgba(0, 0, 0, 0.05);
+        border-radius: 5px;
+        margin: 10px 0;
+        position: relative;
+    }
+} 
+
+.btn_delete {
+    @include close;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 35px;
+    border-radius: 5px;
+
+}
+  
+  
