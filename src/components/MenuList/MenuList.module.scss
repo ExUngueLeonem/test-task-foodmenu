@@ -1,0 +1,20 @@
+@import "../../style/mixins.scss";
+
+.menu_list {
+    &__inner {
+        display: block;
+        padding: 10px;
+        border: 2px solid rgba(0, 0, 0, 0.05);
+        border-radius: 5px;
+        margin: 10px 0;
+        position: relative;
+    }
+}
+
+.btn_delete {
+    @include close;
+}
+
+.btn_put {
+    @include put
+}
