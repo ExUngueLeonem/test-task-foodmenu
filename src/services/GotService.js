@@ -1,58 +1,32 @@
-/* export default class GotService {
-    fetchMenu = () => {
-        axios.get(SERVER_URL + '/menu')
-            .then((res) => { setMenu(res.data) })
-            .catch(error => { console.log(error) });
-    }
+ import { axios } from "../html/axios";
+ import { SERVER_URL } from "../html/const";
+ export default class GotService {
+     fetchData = (path) => {
+         return axios.get(SERVER_URL + path)
+             .catch(error => {
+                 console.log(error)
+             });
+     }
 
-    addFoodInputOnChangeHandler = (e) => {
-        setAddFoodInput(e.target.value);
-        console.log(addFoodInput);
-    };
+     //path = '/menu', data = {id: new Date(), food: foodInput}}
+     postData = (path, data) => {
+         return axios.post(SERVER_URL + path, data).catch(error => {
+             console.log(error);
+         });
+     }
 
-    onSubmitHandler = (e) => {
-        e.preventDefault();
-        setMenu(menu.concat({
-            id: new Date(),
-            food: addFoodInput
-        }))
-        console.log(menu);
-        axios.post(SERVER_URL + '/menu', {
-            id: new Date(),
-            food: addFoodInput
-        }).then(resp => {
-            console.log(resp);
-        }).catch(error => {
-            console.log(error);
-        });
-        setAddFoodInput('');
-    };
+     deleteData = (path, itemId) => {
+         return axios.delete(SERVER_URL + path + '/' + itemId)
+             .catch(error => {
+                 console.log(error);
+             })
+     }
 
-    onPutHandler = (itemId) => {
-        axios.put(SERVER_URL + '/menu/' + itemId, {
-            id: itemId,
-            food: addFoodInput
-        }).then(resp => {
-            console.log(resp.data);
-        }).catch(error => {
-            console.log(error);
-        }).then(() => fetchMenu())
-        setAddFoodInput('');
-    }
+     putData = (path, itemId, data) => {
+         return axios.put(SERVER_URL + path + '/' + itemId, data)
+             .catch(error => {
+                 console.log(error);
+             })
+     }
 
-    onDeleteHandler = (itemId) => {
-        axios.delete(SERVER_URL + '/menu/' + itemId)
-            .then(resp => {
-                console.log(resp.data)
-            }).catch(error => {
-                console.log(error);
-            });
-        setMenu(menu.filter((item) => {
-            if (item.id === itemId) return false
-            console.log('itemId', item.id)
-            return true
-        }
-        )) 
-    }
-
-} */
+ }

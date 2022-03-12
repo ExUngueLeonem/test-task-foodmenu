@@ -4,100 +4,76 @@ import AdminHeader from '../../components/AdminHeader';
 import ItemList from '../../components/ItemList';
 import { SERVER_URL } from '../../html/const';
 import { axios } from '../../html/axios';
+import GotService from '../../services/GotService';
 
 
 const AdminMenuPage = () => {
     const [menu, setMenu] = useState([])
-    const [addFoodInput, setAddFoodInput] = useState('');
+    const [foodInput, setFoodInput] = useState('');
+    const gotService = new GotService
+
+    console.log(gotService)
 
     //params = '/menu'
-    const fetchData = (path) => {
-       return axios.get(SERVER_URL + path)
-            .then((res) => { setMenu(res.data) })
+/*     const fetchData = (path) => {
+        return axios.get(SERVER_URL + path)
             .catch(error => { console.log(error) });
     }
+ */
+    const refreshList = () => {
+        gotService.fetchData('/menu')
+            .then((res) => { setMenu(res.data) })
+    }
 
-    //console.log(fetchData('/menu'))
-
-
-    //это заготовка под вынос
-    //path = '/menu', data = {id: new Date(), food: addFoodInput}}
-     const postData = (path, data) => {
+    //path = '/menu', data = {id: new Date(), food: foodInput}}
+/*     const postData = (path, data) => {
         return axios.post(SERVER_URL + path, data
-        ).then(
-            fetchData('/menu')
         ).catch(error => {
             console.log(error);
         });
     }
-
-    const deleteData = (path, itemId) => {
-        return axios.delete(SERVER_URL + path +'/' + itemId)
-            .then(resp => {
-                console.log(resp.data)
-            }).catch(error => {
+ */
+/*     const deleteData = (path, itemId) => {
+        return axios.delete(SERVER_URL + path + '/' + itemId)
+            .catch(error => {
                 console.log(error);
             })
     }
-
+ */
+/*     const putData = (path, itemId, data) => {
+        return axios.put(SERVER_URL + path + '/' + itemId, data)
+        .catch(error => {
+            console.log(error);
+        })
+    }
+ */
     useEffect(
-        () => fetchData('/menu'), []
+        refreshList, []
     );
 
-    const addFoodInputOnChangeHandler = (e) => {
-        setAddFoodInput(e.target.value);
-        console.log(addFoodInput);
+    const foodInputOnChangeHandler = (e) => {
+        setFoodInput(e.target.value);
     };
 
     const onSubmitHandler = (e) => {
-        const id = new Date();
-
+        const id = `f${(+new Date).toString(16)}`;
         e.preventDefault();
-        setMenu(menu.concat({
-            id: id,
-            food: addFoodInput
-        }))
-        
-        //postData это надо рефакторить и выносить
-        axios.post(SERVER_URL + '/menu', {
-            id: id,
-            food: addFoodInput
-        }).then(resp => {
-            console.log(resp);
-            fetchData('/menu')
-        }).catch(error => {
-            console.log(error);
-        });
 
-        setAddFoodInput('');
+        gotService.postData('/menu', { id: id, food: foodInput })
+            .then(() => { refreshList() })
+
+        setFoodInput('');
     };
 
     const onPutHandler = (itemId) => {
-        axios.put(SERVER_URL + '/menu' + '/' + itemId, {
-            id: itemId,
-            food: addFoodInput
-        }).then(resp => {
-            console.log(resp.data);
-            fetchData('/menu')
-        }).catch(error => {
-            console.log(error);
-        });
-        setAddFoodInput('');
+        gotService.putData('/menu', itemId, { id: itemId, food: foodInput })
+            .then(() => { refreshList() })
+        setFoodInput('');
     }
 
     const onDeleteHandler = (itemId) => {
-        axios.delete(SERVER_URL + '/menu' + '/' + itemId)
-            .then(resp => {
-                console.log(resp.data)
-            }).catch(error => {
-                console.log(error);
-            });
-        setMenu(menu.filter((item) => {
-            if (item.id === itemId) return false
-            console.log('itemId', item.id)
-            return true
-        }
-        ))
+        gotService.deleteData('/menu', itemId)
+            .then(() => { refreshList() })
     }
 
     return (
@@ -110,8 +86,8 @@ const AdminMenuPage = () => {
                         className={[styles.menu_input].join(' ')}
                         type="text"
                         placeholder='добавление/изменение продукта'
-                        value={addFoodInput}
-                        onChange={(e) => { addFoodInputOnChangeHandler(e) }}
+                        value={foodInput}
+                        onChange={(e) => { foodInputOnChangeHandler(e) }}
                     ></input>
                 </form>
 
