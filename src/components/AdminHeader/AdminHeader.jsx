@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './AdminHeader.module.scss';
 
-const AdminHeader = () => {
-    const location = useLocation();
-    console.log(location.pathname);
+const AdminHeader = ({ active }) => {
 
-    if (location.pathname === '/admin/menu') {
-
-    } else if (location.pathname === '/admin/staff') {
-
-    } else {
-        
-    }
+    const [state, setState] = useState([
+        { id: 0, element: 'menu', content: 'Меню'},
+        { id: 1, element: 'staff', content: 'Сотрудники'},
+        { id: 2, element: 'order', content: 'Заказы'},
+    ])
 
     return (
         <div className={styles.header_menu}>
-            <Link to="../admin/menu" className={[styles.header_menu__inner, styles.active].join(' ')}>Меню</Link>
-            <Link to="../admin/staff" className={[styles.header_menu__inner, styles.active].join(' ')}>Сотрудники</Link>
-            <Link to="../admin/order" className={[styles.header_menu__inner, styles.active].join(' ')}>Заказы</Link>
+            {state.map(item => {
+                return (
+                    <Link
+                        to={`../admin/${item.element}`}
+                        key={item.element}
+                        className={[styles.header_menu__inner, item.element === active ? styles.active : null].join(' ')
+                        }
+                    >{item.content}
+                    </Link>
+                )
+            })}
         </div>
     );
 };
