@@ -8,45 +8,17 @@ import GotService from '../../services/GotService';
 
 
 const AdminMenuPage = () => {
-    const [menu, setMenu] = useState([])
+    const [menu, setMenu] = useState([]);
     const [foodInput, setFoodInput] = useState('');
-    const gotService = new GotService
+    const gotService = new GotService;
 
     console.log(gotService)
 
-    //params = '/menu'
-/*     const fetchData = (path) => {
-        return axios.get(SERVER_URL + path)
-            .catch(error => { console.log(error) });
-    }
- */
     const refreshList = () => {
         gotService.fetchData('/menu')
             .then((res) => { setMenu(res.data) })
     }
 
-    //path = '/menu', data = {id: new Date(), food: foodInput}}
-/*     const postData = (path, data) => {
-        return axios.post(SERVER_URL + path, data
-        ).catch(error => {
-            console.log(error);
-        });
-    }
- */
-/*     const deleteData = (path, itemId) => {
-        return axios.delete(SERVER_URL + path + '/' + itemId)
-            .catch(error => {
-                console.log(error);
-            })
-    }
- */
-/*     const putData = (path, itemId, data) => {
-        return axios.put(SERVER_URL + path + '/' + itemId, data)
-        .catch(error => {
-            console.log(error);
-        })
-    }
- */
     useEffect(
         refreshList, []
     );
@@ -56,8 +28,8 @@ const AdminMenuPage = () => {
     };
 
     const onSubmitHandler = (e) => {
-        const id = `f${(+new Date).toString(16)}`;
         e.preventDefault();
+        const id = `f${(+new Date).toString(16)}`;
 
         gotService.postData('/menu', { id: id, food: foodInput })
             .then(() => { refreshList() })
