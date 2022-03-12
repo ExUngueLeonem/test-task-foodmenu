@@ -11,18 +11,6 @@
     @include shadow;
 }
 
-/* .header_menu {
-    display: flex;
-    justify-content: space-between;
-
-    &__inner {
-        font-size: 40px;
-        display: block;
-        padding: 10px;
-    }
-}
-
- */
 .menu_input {
     width: 100%;
     font-size: 18px;
@@ -57,11 +45,6 @@
 
 .btn_delete {
     @include close;
-    right: 10px;
-    top: 62%;
-    transform: translateY(-50%);
-    width: 32px;
-    height: 35px;
 }
 
 .btn_put {
