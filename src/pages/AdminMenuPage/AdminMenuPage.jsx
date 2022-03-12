@@ -32,7 +32,7 @@ const AdminMenuPage = () => {
             food: addFoodInput
         }))
         console.log(menu);
-        axios.post('http://localhost:3000/menu', {
+        axios.post(SERVER_URL + '/menu', {
             id: new Date(),
             food: addFoodInput
         }).then(resp => {
@@ -46,13 +46,13 @@ const AdminMenuPage = () => {
     const onPutHandler = (itemId) => {
         axios.put(SERVER_URL + '/menu/' + itemId, {
             id: itemId,
-            food: "asdfasdf4654 Давленый ксенос"
+            food: addFoodInput
         }).then(resp => {
-
             console.log(resp.data);
         }).catch(error => {
             console.log(error);
-        });
+        }).then(() => fetchMenu())
+        setAddFoodInput('');
     }
 
     const onDeleteHandler = (itemId) => {
@@ -67,7 +67,7 @@ const AdminMenuPage = () => {
             console.log('itemId', item.id)
             return true
         }
-        ))
+        )) 
     }
 
     return (
@@ -79,7 +79,7 @@ const AdminMenuPage = () => {
                     <input
                         className={[styles.menu_input].join(' ')}
                         type="text"
-                        placeholder='добавление продукта'
+                        placeholder='добавление/изменение продукта'
                         value={addFoodInput}
                         onChange={(e) => { addFoodInputOnChangeHandler(e) }}
                     ></input>
