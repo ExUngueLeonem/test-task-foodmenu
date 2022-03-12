@@ -7,7 +7,7 @@ const AdminMenuPage = () => {
     return (
         <div className={styles.container}>
             <div className={styles.flex_container}>
-            <AdminHeader/>
+            <AdminHeader active={'menu'}/>
 
                 <input className={[styles.menu_input].join(' ')} type="text" placeholder='добавление продукта'></input>
                 

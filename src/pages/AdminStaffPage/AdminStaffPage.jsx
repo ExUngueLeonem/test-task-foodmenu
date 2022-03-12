@@ -6,7 +6,7 @@ const AdminStaffPage = () => {
     return (
         <div className={styles.container}>
             <div className={styles.flex_container}>
-            <AdminHeader/>
+            <AdminHeader active='staff'/>
 
                 <input className={[styles.menu_input].join(' ')} type="text" placeholder='добавление сотрудника'></input>
                 
