@@ -11,7 +11,7 @@ const itemList = ({
             {item.map((itemItem) => {
                 return (
                     <div key={itemItem.id} className={styles.item_list__inner}>
-                        <span>{itemItem.food}</span>
+                        <span>{itemItem.food || itemItem.userName}</span>
                         <div className={styles.btn_delete} onClick={(e) => onDeleteHandler(itemItem.id)}></div>
                         <div className={styles.btn_put} onClick={(e) => onPutHandler(itemItem.id)}>изменить</div>
                     </div>

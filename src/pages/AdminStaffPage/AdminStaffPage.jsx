@@ -1,52 +1,74 @@
-import React from 'react';
-import AdminHeader from '../../components/AdminHeader';
+import React, { useEffect, useState } from 'react';
 import styles from './AdminStaffPage.module.scss';
+import AdminHeader from '../../components/AdminHeader';
+import ItemList from '../../components/ItemList';
+import GotService from '../../services/GotService';
+
 
 const AdminStaffPage = () => {
+    const [staff, setStaff] = useState([]);
+    
+    const [foodInput, setFoodInput] = useState('');
+    const gotService = new GotService;
+
+    console.log(gotService)
+
+    const refreshList = () => {
+        gotService.fetchData('/staff')
+            .then((res) => { setStaff(res.data) })
+    }
+
+    useEffect(
+        refreshList, []
+    );
+
+    const foodInputOnChangeHandler = (e) => {
+        setFoodInput(e.target.value);
+    };
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        const id = `f${(+new Date).toString(16)}`;
+
+        gotService.postData('/staff', { id: id, food: foodInput })
+            .then(() => { refreshList() })
+
+        setFoodInput('');
+    };
+
+    const onPutHandler = (itemId) => {
+        gotService.putData('/staff', itemId, { id: itemId, food: foodInput })
+            .then(() => { refreshList() })
+        setFoodInput('');
+    }
+
+    const onDeleteHandler = (itemId) => {
+        gotService.deleteData('/staff', itemId)
+            .then(() => { refreshList() })
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.flex_container}>
-            <AdminHeader active='staff'/>
+                <AdminHeader active={'staff'} />
+                <form onSubmit={(e) => { onSubmitHandler(e) }}>
 
-                <input className={[styles.menu_input].join(' ')} type="text" placeholder='добавление сотрудника'></input>
-                
-                <div className={styles.menu_list}>
+                    <input
+                        className={[styles.menu_input].join(' ')}
+                        type="text"
+                        placeholder='добавление/изменение сотрудника'
+                        value={foodInput}
+                        onChange={(e) => { foodInputOnChangeHandler(e) }}
+                    ></input>
+                </form>
 
-                    <div className={styles.menu_list__inner}>
-                        <span>(список сотрудников)</span>
-                        <div className={styles.btn_delete} onClick={(e) => console.log("удалить элемент", e.target)}></div>
-                        <div className={styles.btn_put} onClick={(e) => console.log("удалить элемент", e.target)}>изменить</div>
-                    </div>
-                    <div className={styles.menu_list__inner}>
-                        <span>(список сотрудников)</span>
-                        <div className={styles.btn_delete} onClick={(e) => console.log("удалить элемент", e.target)}></div>
-                        <div className={styles.btn_put} onClick={(e) => console.log("удалить элемент", e.target)}>изменить</div>
-                    </div>
-                    <div className={styles.menu_list__inner}>
-                        <span>(список сотрудников)</span>
-                        <div className={styles.btn_delete} onClick={(e) => console.log("удалить элемент", e.target)}></div>
-                        <div className={styles.btn_put} onClick={(e) => console.log("удалить элемент", e.target)}>изменить</div>
-                    </div>
-                    <div className={styles.menu_list__inner}>
-                        <span>(список сотрудников)</span>
-                        <div className={styles.btn_delete} onClick={(e) => console.log("удалить элемент", e.target)}></div>
-                        <div className={styles.btn_put} onClick={(e) => console.log("удалить элемент", e.target)}>изменить</div>
-                    </div>
-                    <div className={styles.menu_list__inner}>
-                        <span>(список сотрудников)</span>
-                        <div className={styles.btn_delete} onClick={(e) => console.log("удалить элемент", e.target)}></div>
-                        <div className={styles.btn_put} onClick={(e) => console.log("удалить элемент", e.target)}>изменить</div>
-                    </div>
-                    <div className={styles.menu_list__inner}>
-                        <span>(список сотрудников)</span>
-                        <div className={styles.btn_delete} onClick={(e) => console.log("удалить элемент", e.target)}></div>
-                        <div className={styles.btn_put} onClick={(e) => console.log("удалить элемент", e.target)}>изменить</div>
-                    </div>
-
-                </div>{/* /.item_list */}
+                <ItemList
+                    item={staff}
+                    onPutHandler={onPutHandler}
+                    onDeleteHandler={onDeleteHandler}
+                />
 
                 <div className={styles.menu_btn_container}>
-                    <button className={styles.menu_btn}>оформить</button>
                     <button className={styles.menu_btn}>история</button>
                 </div>
             </div>

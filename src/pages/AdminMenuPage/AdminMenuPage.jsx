@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styles from './AdminMenuPage.module.scss';
 import AdminHeader from '../../components/AdminHeader';
 import ItemList from '../../components/ItemList';
-import { SERVER_URL } from '../../html/const';
-import { axios } from '../../html/axios';
 import GotService from '../../services/GotService';
 
 
