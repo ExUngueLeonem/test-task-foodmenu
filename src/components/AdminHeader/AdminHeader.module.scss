@@ -1,11 +1,19 @@
+@import '../../style/variables.scss';
+
 .header_menu {
     display: flex;
     justify-content: space-between;
+    text-align: center;
 
     &__inner {
         font-size: 40px;
         display: block;
         padding: 10px;
+        border-radius: 3px;
+        min-width: 300px;
     }
 }
 
+.active {
+    background: $primary_gradient;
+}

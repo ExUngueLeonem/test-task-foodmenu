@@ -5,9 +5,12 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import AdminMenuPage from './pages/AdminMenuPage';
 
 import AuthPage from './pages/AuthPage';
+import AdminMenuPage from './pages/AdminMenuPage';
+import AdminStaffPage from './pages/AdminStaffPage';
+import AdminOrderPage from './pages/AdminOrderPage';
+
 
 
 
@@ -17,6 +20,9 @@ const App = () => {
       <Routes>
         <Route path="*" element={<AuthPage />} />
         <Route path="admin/menu" element={<AdminMenuPage/>}/>
+        <Route path="admin/staff" element={<AdminStaffPage/>}/>
+        <Route path="admin/order" element={<AdminOrderPage/>}/>
+
       </Routes>
     </BrowserRouter>
   );
