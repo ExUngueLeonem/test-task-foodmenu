@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './AdminMenuPage.module.scss';
 import AdminHeader from '../../components/AdminHeader';
-import MenuList from '../../components/MenuList';
+import ItemList from '../../components/ItemList';
 import { SERVER_URL } from '../../html/const';
 import { axios } from '../../html/axios';
 
@@ -10,14 +10,38 @@ const AdminMenuPage = () => {
     const [menu, setMenu] = useState([])
     const [addFoodInput, setAddFoodInput] = useState('');
 
-    const fetchMenu = () => {
-        axios.get(SERVER_URL + '/menu')
+    //params = '/menu'
+    const fetchData = (path) => {
+       return axios.get(SERVER_URL + path)
             .then((res) => { setMenu(res.data) })
             .catch(error => { console.log(error) });
     }
 
+    //console.log(fetchData('/menu'))
+
+
+    //это заготовка под вынос
+    //path = '/menu', data = {id: new Date(), food: addFoodInput}}
+     const postData = (path, data) => {
+        return axios.post(SERVER_URL + path, data
+        ).then(
+            fetchData('/menu')
+        ).catch(error => {
+            console.log(error);
+        });
+    }
+
+    const deleteData = (path, itemId) => {
+        return axios.delete(SERVER_URL + path +'/' + itemId)
+            .then(resp => {
+                console.log(resp.data)
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+
     useEffect(
-        fetchMenu, []
+        () => fetchData('/menu'), []
     );
 
     const addFoodInputOnChangeHandler = (e) => {
@@ -26,37 +50,43 @@ const AdminMenuPage = () => {
     };
 
     const onSubmitHandler = (e) => {
+        const id = new Date();
+
         e.preventDefault();
         setMenu(menu.concat({
-            id: new Date(),
+            id: id,
             food: addFoodInput
         }))
-        console.log(menu);
+        
+        //postData это надо рефакторить и выносить
         axios.post(SERVER_URL + '/menu', {
-            id: new Date(),
+            id: id,
             food: addFoodInput
         }).then(resp => {
             console.log(resp);
+            fetchData('/menu')
         }).catch(error => {
             console.log(error);
         });
+
         setAddFoodInput('');
     };
 
     const onPutHandler = (itemId) => {
-        axios.put(SERVER_URL + '/menu/' + itemId, {
+        axios.put(SERVER_URL + '/menu' + '/' + itemId, {
             id: itemId,
             food: addFoodInput
         }).then(resp => {
             console.log(resp.data);
+            fetchData('/menu')
         }).catch(error => {
             console.log(error);
-        }).then(() => fetchMenu())
+        });
         setAddFoodInput('');
     }
 
     const onDeleteHandler = (itemId) => {
-        axios.delete(SERVER_URL + '/menu/' + itemId)
+        axios.delete(SERVER_URL + '/menu' + '/' + itemId)
             .then(resp => {
                 console.log(resp.data)
             }).catch(error => {
@@ -67,7 +97,7 @@ const AdminMenuPage = () => {
             console.log('itemId', item.id)
             return true
         }
-        )) 
+        ))
     }
 
     return (
@@ -85,8 +115,8 @@ const AdminMenuPage = () => {
                     ></input>
                 </form>
 
-                <MenuList
-                    menu={menu}
+                <ItemList
+                    item={menu}
                     onPutHandler={onPutHandler}
                     onDeleteHandler={onDeleteHandler}
                 />
