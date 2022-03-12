@@ -8,5 +8,19 @@ npm install react-router-dom@6
 npm i json-server
     json-server --watch db.json
 
+npm install axios
 
 
+const axios = require('axios');
+
+axios.put('http://localhost:3000/users/6/', {
+    first_name: 'Fred',
+    last_name: 'Blair',
+    email: 'freddyb34@yahoo.com'
+}).then(resp => {
+
+    console.log(resp.data);
+}).catch(error => {
+
+    console.log(error);
+});
