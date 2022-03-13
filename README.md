@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# Тестовое задание на позицию Инженер - программист
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Запуск проложения 
+    запуск вервера на 3000 порту
+    json-server db.json -m ./node_modules/json-server-auth
+
+    запуск клиента
+    npm start
 
 ## Available Scripts
 

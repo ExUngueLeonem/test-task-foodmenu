@@ -1,3 +1,7 @@
+
+
+
+
 npm i node-sass
 
 npm install --save normalize.css
@@ -5,9 +9,72 @@ import 'normalize.css'
 
 npm install react-router-dom@6
 
-npm i json-server
-    json-server --watch db.json
+//npm i json-server
+//   json-server --watch db.json
+
+npm install express json-server json-server-auth --save
+    json-server db.json -m ./node_modules/json-server-auth
 
 npm install axios
 
 надо вынести методы по работе с сетью отдельно, а то получается бардак
+
+
+я захожу в ордер
+    у меня массив объектов 
+    {
+        "id": 0,
+        "userName": "Пертурабо",
+        "userOrder": [...]
+    }
+    
+мне нужно выбрать объект и замапить из него userOrder
+если выбрать id из первого списка
+и он юудет совпадать с ID из заказа
+то я в list помещаю конкретно объект заказа, у которого совпадает ID c юзером
+
+Order list
+удалить лишние методы
+
+нужно еще сделать аутентификацию
+прикрутить редакс?
+
+npm run start
+
+==========================
+post http://localhost:3000/register
+{
+    "email": "primaris@mail.com",
+    "password": "primaris",
+    "role": "admin"
+}
+
+response
+{
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByaW1hcmlzQG1haWwuY29tIiwiaWF0IjoxNjQ3MTgxODE1LCJleHAiOjE2NDcxODU0MTUsInN1YiI6IjEifQ.zpdv4uFE-kAlGExdgE3e9A-wVbX8sYSum-dy8NRe4G0",
+    "user": {
+        "email": "primaris@mail.com",
+        "role": "admin",
+        "id": 1
+    }
+}
+
+==========================
+
+post http://localhost:3000/login
+{
+    "email": "primaris@mail.com",
+    "password": "primaris"
+}
+response
+{
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByaW1hcmlzQG1haWwuY29tIiwiaWF0IjoxNjQ3MTgyNDc3LCJleHAiOjE2NDcxODYwNzcsInN1YiI6IjEifQ.wLFW2Hy7yVPYcbmTi4UvkXMcUONP0rimMgq5mM0VsLc",
+    "user": {
+        "email": "primaris@mail.com",
+        "role": "admin",
+        "id": 1
+    }
+}
+
+==========================
+660
