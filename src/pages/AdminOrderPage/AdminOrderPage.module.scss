@@ -11,6 +11,19 @@
     @include shadow;
 }
 
+.flex_container {
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+        width: 49%;
+    }
+
+    &__right {
+        width: 49%;
+    }
+}
+
 .menu_input {
     width: 100%;
     font-size: 18px;
@@ -31,18 +44,7 @@
 
     cursor: pointer;
 }
-
-.menu_list {
-    &__inner {
-        display: block;
-        padding: 10px;
-        border: 2px solid rgba(0, 0, 0, 0.05);
-        border-radius: 5px;
-        margin: 10px 0;
-        position: relative;
-    }
-}
-
+ 
 .btn_delete {
     @include close;
 }

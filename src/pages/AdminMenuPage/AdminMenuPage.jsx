@@ -10,8 +10,6 @@ const AdminMenuPage = () => {
     const [foodInput, setFoodInput] = useState('');
     const gotService = new GotService;
 
-    console.log(gotService)
-
     const refreshList = () => {
         gotService.fetchData('/menu')
             .then((res) => { setMenu(res.data) })
@@ -48,28 +46,26 @@ const AdminMenuPage = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.flex_container}>
-                <AdminHeader active={'menu'} />
-                <form onSubmit={(e) => { onSubmitHandler(e) }}>
+            <AdminHeader active={'menu'} />
+            <form onSubmit={(e) => { onSubmitHandler(e) }}>
 
-                    <input
-                        className={[styles.menu_input].join(' ')}
-                        type="text"
-                        placeholder='добавление/изменение продукта'
-                        value={foodInput}
-                        onChange={(e) => { foodInputOnChangeHandler(e) }}
-                    ></input>
-                </form>
+                <input
+                    className={[styles.menu_input].join(' ')}
+                    type="text"
+                    placeholder='добавление/изменение продукта'
+                    value={foodInput}
+                    onChange={(e) => { foodInputOnChangeHandler(e) }}
+                ></input>
+            </form>
 
-                <ItemList
-                    item={menu}
-                    onPutHandler={onPutHandler}
-                    onDeleteHandler={onDeleteHandler}
-                />
+            <ItemList
+                item={menu}
+                onPutHandler={onPutHandler}
+                onDeleteHandler={onDeleteHandler}
+            />
 
-                <div className={styles.menu_btn_container}>
-                    <button className={styles.menu_btn}>история</button>
-                </div>
+            <div className={styles.menu_btn_container}>
+                <button className={styles.menu_btn}>история</button>
             </div>
         </div>
     );
