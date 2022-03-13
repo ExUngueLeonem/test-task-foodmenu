@@ -1,14 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './AdminMenuPage.module.scss';
 import AdminHeader from '../../components/AdminHeader';
 import ItemList from '../../components/ItemList';
 import GotService from '../../services/GotService';
+import { Context } from '../../components/Context';
+import { useNavigate } from 'react-router-dom';
 
 
 const AdminMenuPage = () => {
+    const gotService = new GotService;
+
+    let navigate = useNavigate();
+
+
     const [menu, setMenu] = useState([]);
     const [foodInput, setFoodInput] = useState('');
-    const gotService = new GotService;
+    const [context, setContext] = useContext(Context);
+
+    const redirect = () => {
+
+        if (context.user && context.user.role !== 'admin') {
+            navigate(`/`);
+        }
+    }
+    redirect();
 
     const refreshList = () => {
         gotService.fetchData('/menu')

@@ -1,7 +1,4 @@
 
-
-
-
 npm i node-sass
 
 npm install --save normalize.css
@@ -17,9 +14,6 @@ npm install express json-server json-server-auth --save
 
 npm install axios
 
-надо вынести методы по работе с сетью отдельно, а то получается бардак
-
-
 я захожу в ордер
     у меня массив объектов 
     {
@@ -27,7 +21,8 @@ npm install axios
         "userName": "Пертурабо",
         "userOrder": [...]
     }
-    
+
+UserOrder    
 мне нужно выбрать объект и замапить из него userOrder
 если выбрать id из первого списка
 и он юудет совпадать с ID из заказа
@@ -37,28 +32,32 @@ Order list
 удалить лишние методы
 
 нужно еще сделать аутентификацию
-прикрутить редакс?
+получил данные о пользователи с сервера
+сделать условие, по которому будет перенаправлять, 
+если роль - Админ, и если роль - Юзер
 
-npm run start
+npm start
 
 ==========================
 post http://localhost:3000/register
 {
-    "email": "primaris@mail.com",
-    "password": "primaris",
-    "role": "admin"
+      "userName": "Админ Примарис",
+      "email": "primaris@mail.com",
+      "password": "primaris",
+      "role": "admin",
+      "id": 1
 }
 
 response
 {
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByaW1hcmlzQG1haWwuY29tIiwiaWF0IjoxNjQ3MTgxODE1LCJleHAiOjE2NDcxODU0MTUsInN1YiI6IjEifQ.zpdv4uFE-kAlGExdgE3e9A-wVbX8sYSum-dy8NRe4G0",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByaW1hcmlzQG1haWwuY29tIiwiaWF0IjoxNjQ3MTg2MjU4LCJleHAiOjE2NDcxODk4NTgsInN1YiI6IjEifQ.xsqnx69rlhU9SrUHmCcW_cuwYQKnHyYzoNFlCGJb8x4",
     "user": {
         "email": "primaris@mail.com",
+        "userName": "Админ Примарис",
         "role": "admin",
         "id": 1
     }
 }
-
 ==========================
 
 post http://localhost:3000/login
@@ -78,3 +77,14 @@ response
 
 ==========================
 660
+
+register
+    {
+                "userName": "Пертурабо",
+                "email": "perturabo@mail.com",
+                "password": "1234",
+                "role": "user"
+    }
+
+    
+==========================

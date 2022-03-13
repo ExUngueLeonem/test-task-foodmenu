@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './AdminOrderPage.module.scss';
 import AdminHeader from '../../components/AdminHeader';
 import GotService from '../../services/GotService';
 import ItemList from '../../components/ItemList';
+import { Context } from '../../components/Context';
 
 const AdminOrderPage = () => {
     const [order, setOrder] = useState([]);
     const [orderInput, setOrderInput] = useState('');
     const gotService = new GotService;
+
+    const [context, setContext] = useContext(Context);
 
     const [userOrder, setUserOrder] = useState('');
 
@@ -48,7 +51,6 @@ const AdminOrderPage = () => {
     return (
         <div className={styles.container}>
             <AdminHeader active={'order'} />
-
             <form onSubmit={(e) => { onSubmitHandler(e) }}>
                 <input
                     className={[styles.menu_input].join(' ')}

@@ -2,10 +2,59 @@
   "users": [
     {
       "email": "primaris@mail.com",
-      "password": "$2a$10$3ZyePxKMVPXKcEhtj/F1MO6lyy8s8eq6gSZPReQtBC/O2k8seYo6C",
+      "password": "$2a$10$2cBeCbMAkuJETo7IytdoUOFgBBIUpyErxLtoJig3P26tZbS1xVtsa",
       "userName": "Админ Примарис",
       "role": "admin",
       "id": 1
+    },
+    {
+      "email": "perturabo@mail.com",
+      "password": "$2a$10$8HTwojGwxhyGEDwySHRuQejaIMlDLxWGsZLY16QBs8AV/SYUa232y",
+      "userName": "Пертурабо",
+      "role": "user",
+      "id": 2
+    },
+    {
+      "email": "garvenloken@mail.com",
+      "password": "$2a$10$H04tGkDg3c2UiSqkVEoUee4iRsobEojglbVabRyAvhMWdEdpm2Lr2",
+      "userName": "Гарвен Локен",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "email": "petting@mail.com",
+      "password": "$2a$10$cms7907VeIgRQTXeSgvS/uqO16CZFIzg/rCnFL3h7UCVWzbjAugbW",
+      "userName": "Наводчик Петр",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "email": "moonwolf@mail.com",
+      "password": "$2a$10$Fe4M0pGFIy3NdZz2M5MZxOwbvP09NHMuKYSgYL5GO5oBXDN9fl.ie",
+      "userName": "Капитан роты Лунных Волков",
+      "role": "user",
+      "id": 5
+    },
+    {
+      "email": "pilot@mail.com",
+      "password": "$2a$10$cuB1op7tIDSckmKCInBm6eliQFxy0PRLu/k6pBAMwG5pBgfAVYj96",
+      "userName": "Пилот гравицапы",
+      "role": "user",
+      "id": 6
+    },
+    {
+      "email": "comissar@mail.com",
+      "password": "$2a$10$oIfTwfLnYeqtS7KFwewvAuqXh/GiFqlc.usUxaJfGszHDETpfaSfu",
+      "userName": "Комиссар Гвардии",
+      "role": "user",
+      "id": 7
+    },
+    {
+      "email": "jiliman@mail.com",
+      "password": "$2a$10$QEm/HaW/sFsBrLRwEMQc7OaheG4akaCKDmqiIWqmaEt0iwVqb/8k2",
+      "userName": "Жилиман",
+      "role": "user",
+      "id": 8
     }
   ],
   "menu": [
