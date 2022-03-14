@@ -8,11 +8,8 @@ import { Context } from '../../components/Context';
 const AdminOrderPage = () => {
     const [order, setOrder] = useState([]);
     const [orderInput, setOrderInput] = useState('');
+    const [orderListId, setOrderListId] = useState(0);
     const gotService = new GotService;
-
-    const [context, setContext] = useContext(Context);
-
-    const [userOrder, setUserOrder] = useState('');
 
     const refreshList = () => {
         gotService.fetchData('/order')
@@ -48,10 +45,28 @@ const AdminOrderPage = () => {
             .then(() => { refreshList() })
     }
 
+    const onPickHandler = (e) => {
+        if (!e.target.id) {
+            e.target.parentNode.getAttribute('id')
+            setOrderListId(e.target.parentNode.getAttribute('id'))
+        } else {
+            setOrderListId(e.target.id);
+        }
+    }
+
+    let userName = order[orderListId] ? order[orderListId].userName : null;
+    let orderItem = order[orderListId] ? order[orderListId].userOrder : null;
+
     return (
         <div className={styles.container}>
             <AdminHeader active={'order'} />
-            <form onSubmit={(e) => { onSubmitHandler(e) }}>
+            <span>
+                {userName ? userName : null}
+            </span> 
+{/*
+             //переделать инпут, чтобы добавлял товары
+ */}            
+ <form onSubmit={(e) => { onSubmitHandler(e) }}>
                 <input
                     className={[styles.menu_input].join(' ')}
                     type="text"
@@ -70,11 +85,12 @@ const AdminOrderPage = () => {
                         item={order}
                         onPutHandler={onPutHandler}
                         onDeleteHandler={onDeleteHandler}
+                        onPickHandler={onPickHandler}
                     />
                 </div>
                 {!!order[0] && <div className={styles.flex_container__right}>
                     <ItemList
-                        item={order[0].userOrder}/* нужно сделать выбор, кого передавать */
+                        item={orderItem ? orderItem : null}/* нужно сделать выбор, кого передавать */
                         onPutHandler={onPutHandler}
                         onDeleteHandler={onDeleteHandler}
                     />
