@@ -1,0 +1,59 @@
+@import '../../style/mixins.scss';
+
+
+.container {
+    max-width: 1480px;
+    margin: 20px auto;
+    padding: 40px;
+    padding-top: 20px;
+
+    border-radius: 15px;
+    @include shadow;
+}
+
+.flex_container {
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+        width: 49%;
+    }
+
+    &__right {
+        width: 49%;
+    }
+}
+
+.menu_input {
+    width: 100%;
+    font-size: 18px;
+    @include input;
+}
+
+.menu_btn_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu_btn {
+    @include button_primary;
+    padding: 15px;
+    display: block;
+    font-size: 20px;
+    min-width: 250px;
+
+    cursor: pointer;
+}
+ 
+.btn_delete {
+    @include close;
+}
+
+.btn_put {
+    @include put
+}
+
+.userName {
+    padding: 20px 0;
+    font-size: 30px;
+}
