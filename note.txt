@@ -1,4 +1,14 @@
+server (port 3000)
+json-server-auth db.json -r routes.json
 
+client (3001)
+npm start
+============================
+      "email": "primaris@mail.com",
+      "password": "primaris",
+      "role": "admin"
+============================
+============================
 npm i node-sass
 
 npm install --save normalize.css
@@ -88,3 +98,17 @@ register
 
     
 ==========================
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}
+
+
+GET /posts?title=json-server&author=typicode
+GET /posts?id=1&id=2
+GET /comments?author.name=typicode

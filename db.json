@@ -55,6 +55,13 @@
       "userName": "Жилиман",
       "role": "user",
       "id": 8
+    },
+    {
+      "email": "qwerty@qwerty.com",
+      "password": "$2a$10$thz5PKNDjv4H2xOyXTiXmOVVh/GUhO7IV2TKqvS6289uBx8e8zwq6",
+      "userName": "Настоящий Император",
+      "role": "admin",
+      "id": 10
     }
   ],
   "menu": [

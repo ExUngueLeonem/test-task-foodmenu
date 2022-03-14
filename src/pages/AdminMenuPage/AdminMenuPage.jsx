@@ -17,13 +17,12 @@ const AdminMenuPage = () => {
     const [foodInput, setFoodInput] = useState('');
     const [context, setContext] = useContext(Context);
 
-    const redirect = () => {
-
+/*     const redirect = () => {
         if (context.user && context.user.role !== 'admin') {
             navigate(`/`);
         }
     }
-    redirect();
+ */    //redirect();
 
     const refreshList = () => {
         gotService.fetchData('/menu')

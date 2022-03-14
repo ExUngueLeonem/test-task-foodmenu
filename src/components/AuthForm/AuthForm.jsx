@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styles from './AuthForm.module.scss';
 import GotService from '../../services/GotService';
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Context } from '../Context';
 
 /* styles. */
@@ -13,7 +13,19 @@ const AuthForm = () => {
 
     const [context, setContext] = useContext(Context);
 
-    let navigate = useNavigate();
+    
+    const redirect = () => {
+         if (context.user){
+
+             console.log('context.user && context.user.role', context.user && context.user.role !== 'admin')
+             console.log('context.user', context.user )
+             console.log('context.user.role !== "admin"', context.user.role !== 'admin')
+            }
+
+        if (context.user && context.user.role === 'admin') {
+            return (<Navigate to="/admin/menu" replace={true} />)
+        }
+    }
 
     //отлично, мы получаем объект юзера и токен доступа
     const loginHandler = (e) => {
@@ -24,26 +36,25 @@ const AuthForm = () => {
                 password
             }
         )
+        .catch(err => console.log(err))
         .then(res => setContext(res.data))
+        
         setEmail('');
         setPassword('');
-        
-        //нужно испавлять навигацию, по условию, если context.user.role === 'admin'
-        navigate(`/admin/menu`);
     }
 
+    
     const registrationHandler = (e) => {
-
+        const id = `f${(+new Date).toString(16)}`;
 
         gotService.postData('/register',
-            {
-                "userName": "Шака шмака",
-                "email": "asdfasd@mail.com",
-                "password": "1234",
-                "role": "user",
-                "id": 123
-            }
-        )
+        {
+            email,
+            password,
+            "role": 'user',
+            id
+        }
+    )
 
         console.log("регистрируемся", email, password)
 
@@ -61,9 +72,12 @@ const AuthForm = () => {
         setPassword(e.target.value)
     }
 
+    
+    
     return (
         <div className={styles.flex_container}>
-            <div className={styles.form_container}>
+            {redirect()}
+             <div className={styles.form_container}>
                 <div className={styles.header}>
                     <h2>Welcome Back</h2>
                     <h4>Сегодня ты сможешь поесть</h4>
