@@ -13,17 +13,12 @@ const AuthForm = () => {
 
     const [context, setContext] = useContext(Context);
 
-    
+
     const redirect = () => {
-         if (context.user){
-
-             console.log('context.user && context.user.role', context.user && context.user.role !== 'admin')
-             console.log('context.user', context.user )
-             console.log('context.user.role !== "admin"', context.user.role !== 'admin')
-            }
-
         if (context.user && context.user.role === 'admin') {
             return (<Navigate to="/admin/menu" replace={true} />)
+        } else if (context.user && context.user.role === 'user'){
+            return (<Navigate to="/user/menu" replace={true} />)
         }
     }
 
@@ -36,25 +31,25 @@ const AuthForm = () => {
                 password
             }
         )
-        .catch(err => console.log(err))
-        .then(res => setContext(res.data))
-        
+            .catch(err => console.log(err))
+            .then(res => setContext(res.data))
+
         setEmail('');
         setPassword('');
     }
 
-    
+
     const registrationHandler = (e) => {
         const id = `f${(+new Date).toString(16)}`;
 
         gotService.postData('/register',
-        {
-            email,
-            password,
-            "role": 'user',
-            id
-        }
-    )
+            {
+                email,
+                password,
+                "role": 'user',
+                id
+            }
+        )
 
         console.log("регистрируемся", email, password)
 
@@ -65,19 +60,17 @@ const AuthForm = () => {
 
     const inputLoginHandler = (e) => {
         setEmail(e.target.value)
-        if (context.user){ console.log(context.user)}
+        if (context.user) { console.log(context.user) }
     }
 
     const inputPasswordHandler = (e) => {
         setPassword(e.target.value)
     }
 
-    
-    
     return (
         <div className={styles.flex_container}>
             {redirect()}
-             <div className={styles.form_container}>
+            <div className={styles.form_container}>
                 <div className={styles.header}>
                     <h2>Welcome Back</h2>
                     <h4>Сегодня ты сможешь поесть</h4>
