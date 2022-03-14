@@ -1,9 +1,9 @@
- import {
+import {
      axios
- } from "../html/axios";
+ } from "../http";
  import {
      SERVER_URL
- } from "../html/const";
+ } from "../http/const";
  export default class GotService {
 
      //path = '/menu'

@@ -17,8 +17,8 @@ const AuthForm = () => {
     const redirect = () => {
         if (context.user && context.user.role === 'admin') {
             return (<Navigate to="/admin/menu" replace={true} />)
-        } else if (context.user && context.user.role === 'user'){
-            return (<Navigate to="/user/menu" replace={true} />)
+        } else if (context.user && context.user.role === 'user') {
+            return (<Navigate to="/user/order" replace={true} />)
         }
     }
 
@@ -93,8 +93,23 @@ const AuthForm = () => {
                     <button onClick={(e) => { loginHandler(e) }}>Вход</button>
                     <button onClick={(e) => { registrationHandler(e) }}>Регистрация</button>
                 </div>
+                <div>
+                <pre>
+                    <br />
+                    AdminLogin:    qwerty@qwerty.com
+                    <br />
+                    AdminPass:     1234
+                    <br />
+                    <br />
+                    RabotygaLogin: perturabo@mail.com
+                    <br />
+                    RabotygaPass:  1234
+                </pre>
+                </div>
+
             </div>
         </div>
+
     );
 };
 

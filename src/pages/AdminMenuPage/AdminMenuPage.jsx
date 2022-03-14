@@ -4,14 +4,11 @@ import AdminHeader from '../../components/AdminHeader';
 import ItemList from '../../components/ItemList';
 import GotService from '../../services/GotService';
 import { Context } from '../../components/Context';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 const AdminMenuPage = () => {
     const gotService = new GotService;
-
-    let navigate = useNavigate();
-
 
     const [menu, setMenu] = useState([]);
     const [foodInput, setFoodInput] = useState('');
@@ -60,6 +57,10 @@ const AdminMenuPage = () => {
 
     return (
         <div className={styles.container}>
+{/*             {!context.user && (
+                <Navigate to="/auth" replace={true} /> 
+            )}
+ */}
             <AdminHeader active={'menu'} />
             <form onSubmit={(e) => { onSubmitHandler(e) }}>
 

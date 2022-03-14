@@ -12,7 +12,8 @@ const AdminStaffPage = () => {
     const gotService = new GotService;
 
     const refreshList = () => {
-        gotService.fetchData('/staff')
+        //gotService.fetchData('/staff')
+        gotService.fetchData('/users')
             .then((res) => { setStaff(res.data) })
     }
 
