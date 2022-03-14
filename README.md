@@ -8,19 +8,31 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
     запуск клиента
     npm start
+## что НУЖНО доделать
+http://localhost:3001/admin/order
+добавление удаление заказов, 
+просмотр предыдущих дней
 
-## Available Scripts
+http://localhost:3001/user/order
+странцу заказа для юзера нужно полностью сделать
 
-In the project directory, you can run:
 
-### `npm start`
+## что хорошего сделано
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+переиспользуемый список
+вынос сервисов в gotService
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## что плохого
+не использован стейт менеджер
+контекст нужно сделать  нормально
+редирект нужно делать на основе ответа от сервера, если мы отправляем протухшие токены, а не так
 
+плохая структура данных
+
+## что можно доделать
+AdminOrderPage сделать подсветку для выбранного пользователя
+настроить axios, чтобы он слал токены в заголовках запроса
+настроить навигацию, чтобы показывало переменные
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
