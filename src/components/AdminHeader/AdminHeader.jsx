@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import styles from './AdminHeader.module.scss';
-import { Context } from '../Context';
 
 import AuthStore from '../../store/AuthStore';
 import { observer } from 'mobx-react-lite';
  
 const AdminHeader = observer(({ active }) => {
-
-    const [context, setContext] = useContext(Context);
 
     const state = [
         { id: 0, element: 'menu', content: 'Меню' },

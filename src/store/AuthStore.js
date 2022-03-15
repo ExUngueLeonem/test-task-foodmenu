@@ -1,10 +1,5 @@
-import {
-    makeAutoObservable
-} from "mobx"
-import GotService from '../services/GotService';
-import $api from "../http";
-
-const gotService = new GotService();
+import { makeAutoObservable } from "mobx"
+import AuthService from "../services/AuthService";
 
 class AuthStore {
     user = {
@@ -14,35 +9,35 @@ class AuthStore {
         id: 999
     }
 
+    setUser(user) {
+        this.user = user;
+    }
+
     constructor() {
-        makeAutoObservable(this)    
+        makeAutoObservable(this)
     }
 
-    login(email, password) {
-        return $api.post('/login', {
-                email,
-                password
-            })
-            .then(res => this.user = res.data.user)
-            .catch(error => {
-                console.log(error)
-            });
+    async login(email, password) {
+        try {
+            const response = await AuthService.login(email, password)
+            console.log(response)
+            localStorage.setItem('token', response.data.accessToken)
+            this.setUser(response.data.user)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+
     }
 
-    registration(email, password) {
-        const id = `f${(+new Date).toString(16)}`;
-        return $api.post('/register', 
-        {
-            email,
-            password,
-            "userName": 'Новологиненный чел',
-            "role": 'user',
-            id
-        })
-        .then(res => this.user = res.data.user)
-        .catch(error => {
-            console.log(error)
-        });
+    async registration(email, password) {
+        try {
+            const response = await AuthService.registration(email, password)
+            console.log(response);
+            localStorage.setItem('token', response.data.accessToken)
+            this.setUser(response.data.user)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
     }
 
     logout() {

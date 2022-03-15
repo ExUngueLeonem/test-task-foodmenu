@@ -3,12 +3,10 @@ import { observer } from 'mobx-react-lite';
 import styles from './AdminMenuPage.module.scss';
 import AdminHeader from '../../components/AdminHeader';
 import ItemList from '../../components/ItemList';
-import GotService from '../../services/GotService';
 
 import AdminStore from '../../store/AdminStore'
 
 const AdminMenuPage = observer(() => {
-    const gotService = new GotService;
 
     const [foodInput, setFoodInput] = useState('');
 
@@ -25,25 +23,19 @@ const AdminMenuPage = observer(() => {
         refreshList, []
     );
 
-    //добавление нового блюда
     const onSubmitHandler = (e) => {
         e.preventDefault();
         AdminStore.addFoodToMenu(foodInput)
-            .then(refreshList)
         setFoodInput('');
     };
 
-    //кнопка изменения итема
     const onPutHandler = (itemId) => {
         AdminStore.changeFood(itemId, foodInput)
-            .then(() => { refreshList() })
         setFoodInput('');
     }
 
-    //кнопка удаления
     const onDeleteHandler = (itemId) => {
         AdminStore.deleteFood(itemId)
-            .then(() => { refreshList() })
     }
 
     return (

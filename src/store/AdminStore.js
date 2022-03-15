@@ -3,6 +3,7 @@ import {
 } from "mobx"
 import GotService from '../services/GotService';
 import $api from "../http";
+import AdminService from "../services/AdminService";
 
 const gotService = new GotService();
 
@@ -19,60 +20,56 @@ class AdminStore {
         makeAutoObservable(this);
     }
 
-    getMenu = async () => {
-        return await $api.get(MENU_URL)
-            .then(res => this.menu = res.data)
-            .catch(error => {
-                console.log(error)
-            });
+    setMenu(menu) {
+        this.menu = menu;
     }
 
-    addFoodToMenu(foodInput) {
-        const id = `f${(+new Date).toString(16)}`;
-        return $api.post(MENU_URL, {
-            id: id,
-            food: foodInput
-        }).catch(error => {
-            console.log(error);
-        })
+    getMenu = async () => {
+        try {
+            const response = await AdminService.getMenu();
+            this.setMenu(response.data)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+    }
+
+    addFoodToMenu = async (foodInput) => {
+        try {
+            const response = await AdminService.addFoodToMenu(foodInput);
+            this.setMenu([...this.menu, response.data])
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
     };
 
-    changeFood(itemId, foodInput) {
-        return $api.put(MENU_URL + '/' + itemId, {
-                id: itemId,
-                food: foodInput
+    changeFood = async (itemId, foodInput) => {
+        console.log('changeFood')
+        try {
+            const response = await AdminService.changeFood(itemId, foodInput)
+            console.log('changeFood', response.data)
+            let result = this.menu.map( elem => {
+                if (elem.id === itemId) {
+                    return response.data
+                } else return elem
             })
-            .catch(error => {
-                console.log(error);
-            })
+            this.setMenu(result)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
     }
 
-    deleteFood(itemId) {
-            return $api.delete(MENU_URL + '/' + itemId)
-                .catch(error => {
-                    console.log(error);
-                })           
+    deleteFood = async (itemId) => {
+        try {
+            await AdminService.deleteFood(itemId)
+            let result = this.menu.filter( elem => {
+                if (elem.id === itemId) return false
+                return true
+            })
+            this.setMenu(result)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
     }
-
-
-
-    /*     //path = '/menu'
-        fetchData = (path) => {
-            return axios.get(SERVER_URL + path)
-                .catch(error => {
-                    console.log(error)
-                });
-        }
-     */
-    /*     
-        const refreshList = () => {
-            gotService.fetchData('/menu')
-                .then((res) => { setMenu(res.data) })
-
-
-        }
-     */
-
 
     addUsers() {
         console.log('addUsers')

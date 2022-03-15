@@ -94,6 +94,11 @@
       "userName": "Новологиненный чел",
       "role": "user",
       "id": "f17f8e7d6e7e"
+    },
+    {
+      "email": "dfgh@dfgh.com",
+      "password": "$2a$10$c0rGenOI5s7cTCey1cKUO.rXdFMgoh5Ik0mrXNOXKIiFkgWQrtk2C",
+      "id": 11
     }
   ],
   "menu": [
@@ -160,6 +165,14 @@
     {
       "id": "f17f8ea14b42",
       "food": "Червяк Анатолий"
+    },
+    {
+      "id": "f17f8f17e97c",
+      "food": "пиломеч делает брррр"
+    },
+    {
+      "id": "f17f8f3d03c7",
+      "food": "ха ха пиломеч делает брррр"
     }
   ],
   "staff": [
