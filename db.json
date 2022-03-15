@@ -62,6 +62,38 @@
       "userName": "Настоящий Император",
       "role": "admin",
       "id": 10
+    },
+    {
+      "email": "opopo@opopo.com",
+      "password": "$2a$10$KIYq8makcyeYMn2G5/OF9uyzXxpOmfxUamDXS/yj7YTl4QvGc5b1C",
+      "role": "user",
+      "id": "f17f8e6f649d"
+    },
+    {
+      "email": "zxcv@zxcv.com",
+      "password": "$2a$10$ZCOQCVgIn6VQRBIk9XUE6umRve8KbpEVq0y.HOAwqb5m11OIrljRu",
+      "role": "user",
+      "id": "f17f8e7105b3"
+    },
+    {
+      "email": "uiop@uiop.com",
+      "password": "$2a$10$Kty1aIk2WdM/LHBudbk1Ue4J6xSwDRr1UsjbWFnLkFkMKe7QhejrS",
+      "role": "user",
+      "id": "f17f8e72509e"
+    },
+    {
+      "email": "xcvb@xcvb.com",
+      "password": "$2a$10$am9tYqjyCo8KB3DYPI.FHO.aWNn5akaaztHUe09YVyB8avNrDAqYi",
+      "userName": "Новологиненный чел",
+      "role": "user",
+      "id": "f17f8e755913"
+    },
+    {
+      "email": "rtyu@rtyu.com",
+      "password": "$2a$10$etE53PXTgg5eCtw/GmbhjuK72k046CEStG2QnDdmU1h6lU86e/tNy",
+      "userName": "Новологиненный чел",
+      "role": "user",
+      "id": "f17f8e7d6e7e"
     }
   ],
   "menu": [
@@ -116,6 +148,18 @@
     {
       "id": "f17f89b57144",
       "food": "Еще один великий суп"
+    },
+    {
+      "id": "f17f8e9f808b",
+      "food": "Жеваный крот"
+    },
+    {
+      "id": "f17f8ea0b342",
+      "food": "Банан"
+    },
+    {
+      "id": "f17f8ea14b42",
+      "food": "Червяк Анатолий"
     }
   ],
   "staff": [

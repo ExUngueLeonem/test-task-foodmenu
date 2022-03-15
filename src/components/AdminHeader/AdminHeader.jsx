@@ -2,7 +2,11 @@ import React, { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import styles from './AdminHeader.module.scss';
 import { Context } from '../Context';
-const AdminHeader = ({ active }) => {
+
+import AuthStore from '../../store/AuthStore';
+import { observer } from 'mobx-react-lite';
+ 
+const AdminHeader = observer(({ active }) => {
 
     const [context, setContext] = useContext(Context);
 
@@ -12,12 +16,13 @@ const AdminHeader = ({ active }) => {
         { id: 2, element: 'order', content: 'Заказы' },
     ]
 
-    let userName = context.user ? context.user.userName : null;
+    let userName = AuthStore.user.name;
 
     return (
         <>
             <div className={styles.header_menu}>
-                {!userName && (
+
+                {AuthStore.user.role !== 'admin' && (
                     <Navigate to="/auth" replace={true} />
                 )}
 
@@ -39,6 +44,6 @@ const AdminHeader = ({ active }) => {
         </>
 
     );
-};
+});
 
 export default AdminHeader;

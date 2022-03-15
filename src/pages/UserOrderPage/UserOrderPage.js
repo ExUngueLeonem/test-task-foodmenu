@@ -6,6 +6,8 @@ import ItemList from '../../components/ItemList';
 import GotService from '../../services/GotService';
 import styles from './UserOrderPage.module.scss';
 
+import AuthStore from '../../store/AuthStore';
+
 const UserOrderPage = () => {
     const [context, setContext] = useContext(Context);
 
@@ -58,16 +60,16 @@ const UserOrderPage = () => {
         }
     }
 
-    let userName = context.user ? context.user.userName : null;
+    let userName = AuthStore.user.userName;
     let orderItem = order[orderListId] ? order[orderListId].userOrder : null;
     console.log(userName)
 
 
     return (
         <div className={styles.container}>
-             {!userName && (
-                <Navigate to="/auth" replace={true} /> 
-            )}
+                {AuthStore.user.role !== 'user' && (
+                    <Navigate to="/auth" replace={true} />
+                )}
             <div className={styles.userName}>
                  {userName ? userName : null}
             </div> 

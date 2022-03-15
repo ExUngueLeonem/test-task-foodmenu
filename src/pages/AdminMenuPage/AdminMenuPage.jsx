@@ -1,66 +1,53 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import styles from './AdminMenuPage.module.scss';
 import AdminHeader from '../../components/AdminHeader';
 import ItemList from '../../components/ItemList';
 import GotService from '../../services/GotService';
-import { Context } from '../../components/Context';
-import { Navigate, useNavigate } from 'react-router-dom';
 
+import AdminStore from '../../store/AdminStore'
 
-const AdminMenuPage = () => {
+const AdminMenuPage = observer(() => {
     const gotService = new GotService;
 
-    const [menu, setMenu] = useState([]);
     const [foodInput, setFoodInput] = useState('');
-    const [context, setContext] = useContext(Context);
 
-/*     const redirect = () => {
-        if (context.user && context.user.role !== 'admin') {
-            navigate(`/`);
-        }
-    }
- */    //redirect();
+    const foodInputOnChangeHandler = (e) => {
+        setFoodInput(e.target.value);
+    };
 
     const refreshList = () => {
-        gotService.fetchData('/menu')
-            .then((res) => { setMenu(res.data) })
+        console.log('get menu')
+        AdminStore.getMenu()
     }
 
     useEffect(
         refreshList, []
     );
 
-    const foodInputOnChangeHandler = (e) => {
-        setFoodInput(e.target.value);
-    };
-
+    //добавление нового блюда
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        const id = `f${(+new Date).toString(16)}`;
-
-        gotService.postData('/menu', { id: id, food: foodInput })
-            .then(() => { refreshList() })
-
+        AdminStore.addFoodToMenu(foodInput)
+            .then(refreshList)
         setFoodInput('');
     };
 
+    //кнопка изменения итема
     const onPutHandler = (itemId) => {
-        gotService.putData('/menu', itemId, { id: itemId, food: foodInput })
+        AdminStore.changeFood(itemId, foodInput)
             .then(() => { refreshList() })
         setFoodInput('');
     }
 
+    //кнопка удаления
     const onDeleteHandler = (itemId) => {
-        gotService.deleteData('/menu', itemId)
+        AdminStore.deleteFood(itemId)
             .then(() => { refreshList() })
     }
 
     return (
         <div className={styles.container}>
-{/*             {!context.user && (
-                <Navigate to="/auth" replace={true} /> 
-            )}
- */}
             <AdminHeader active={'menu'} />
             <form onSubmit={(e) => { onSubmitHandler(e) }}>
 
@@ -74,7 +61,7 @@ const AdminMenuPage = () => {
             </form>
 
             <ItemList
-                item={menu}
+                item={AdminStore.menu}
                 onPutHandler={onPutHandler}
                 onDeleteHandler={onDeleteHandler}
             />
@@ -84,6 +71,6 @@ const AdminMenuPage = () => {
             </div>
         </div>
     );
-};
+});
 
 export default AdminMenuPage;

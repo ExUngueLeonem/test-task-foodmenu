@@ -24,6 +24,11 @@ npm install express json-server json-server-auth --save
 
 npm install axios
 
+npm i mobx mobx-react-lite
+
+=======================================================
+=======================================================
+
 я захожу в ордер
     у меня массив объектов 
     {
