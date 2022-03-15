@@ -1,7 +1,6 @@
 import $api from "../http";
 
-const MENU_URL = '/menu'
-
+import {MENU_URL} from '../const/const'
 export default class AdminService {
 
     static async getMenu() {
@@ -27,9 +26,4 @@ export default class AdminService {
         return await $api.delete(MENU_URL + '/' + itemId)
     }
 
-    /* 
-    
-static async 
-
-    */
 }
