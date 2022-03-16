@@ -24,25 +24,27 @@ const AdminOrderPage = () => {
         AdminStore.getOrder, []
     );
 
-   //удалить
+    //удалить
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
-/*         
-        const id = `f${(+new Date).toString(16)}`;
-        gotService.postData('/order', { id: id, order: orderInput })
-            .then(() => { refreshList() })
-
-*/
+        /*         
+                const id = `f${(+new Date).toString(16)}`;
+                gotService.postData('/order', { id: id, order: orderInput })
+                    .then(() => { refreshList() })
+    
+        */
         setOrderInput('');
     };
 
+    //собирался рефакторить
     const onPutHandler = (itemId) => {
         gotService.putData('/order', itemId, { id: itemId, order: orderInput })
             .then(() => { refreshList() })
         setOrderInput('');
     }
 
+    //собирался рефакторить
     const onDeleteHandler = (itemId) => {
         gotService.deleteData('/order', itemId)
             .then(() => { refreshList() })
@@ -60,18 +62,13 @@ const AdminOrderPage = () => {
     let userName = AdminStore.order[orderListId] ? AdminStore.order[orderListId].userName : null;
     let orderItem = AdminStore.order[orderListId] ? AdminStore.order[orderListId].userOrder : null;
 
-    console.log('userName userOrder', userName, orderItem)
-
     return (
         <div className={styles.container}>
             <AdminHeader active={'order'} />
             <span>
                 {userName ? userName : null}
-            </span> 
-{/*
-             //переделать инпут, чтобы добавлял товары
- */}            
- <form onSubmit={(e) => { onSubmitHandler(e) }}>
+            </span>
+            <form onSubmit={(e) => { onSubmitHandler(e) }}>
                 <input
                     className={[styles.menu_input].join(' ')}
                     type="text"
