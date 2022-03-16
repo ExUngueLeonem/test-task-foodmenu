@@ -4,7 +4,7 @@ import AuthService from "../services/AuthService";
 class AuthStore {
     user = {
         email: "none",
-        userName: "Гость",
+        userName: "Загрузка...",
         role: "guest",
         id: 999
     }
@@ -20,7 +20,7 @@ class AuthStore {
     async login(email, password) {
         try {
             const response = await AuthService.login(email, password)
-            console.log(response)
+            console.log('login', response)
             localStorage.setItem('token', response.data.accessToken)
             this.setUser(response.data.user)
         } catch (e) {

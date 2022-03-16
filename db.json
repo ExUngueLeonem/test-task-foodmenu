@@ -59,46 +59,9 @@
     {
       "email": "qwerty@qwerty.com",
       "password": "$2a$10$thz5PKNDjv4H2xOyXTiXmOVVh/GUhO7IV2TKqvS6289uBx8e8zwq6",
-      "userName": "Настоящий Император",
+      "userName": "Император Человечества",
       "role": "admin",
       "id": 10
-    },
-    {
-      "email": "opopo@opopo.com",
-      "password": "$2a$10$KIYq8makcyeYMn2G5/OF9uyzXxpOmfxUamDXS/yj7YTl4QvGc5b1C",
-      "role": "user",
-      "id": "f17f8e6f649d"
-    },
-    {
-      "email": "zxcv@zxcv.com",
-      "password": "$2a$10$ZCOQCVgIn6VQRBIk9XUE6umRve8KbpEVq0y.HOAwqb5m11OIrljRu",
-      "role": "user",
-      "id": "f17f8e7105b3"
-    },
-    {
-      "email": "uiop@uiop.com",
-      "password": "$2a$10$Kty1aIk2WdM/LHBudbk1Ue4J6xSwDRr1UsjbWFnLkFkMKe7QhejrS",
-      "role": "user",
-      "id": "f17f8e72509e"
-    },
-    {
-      "email": "xcvb@xcvb.com",
-      "password": "$2a$10$am9tYqjyCo8KB3DYPI.FHO.aWNn5akaaztHUe09YVyB8avNrDAqYi",
-      "userName": "Новологиненный чел",
-      "role": "user",
-      "id": "f17f8e755913"
-    },
-    {
-      "email": "rtyu@rtyu.com",
-      "password": "$2a$10$etE53PXTgg5eCtw/GmbhjuK72k046CEStG2QnDdmU1h6lU86e/tNy",
-      "userName": "Новологиненный чел",
-      "role": "user",
-      "id": "f17f8e7d6e7e"
-    },
-    {
-      "email": "dfgh@dfgh.com",
-      "password": "$2a$10$c0rGenOI5s7cTCey1cKUO.rXdFMgoh5Ik0mrXNOXKIiFkgWQrtk2C",
-      "id": 11
     }
   ],
   "menu": [
@@ -167,10 +130,6 @@
       "food": "Червяк Анатолий"
     },
     {
-      "id": "f17f8f17e97c",
-      "food": "пиломеч делает брррр"
-    },
-    {
       "id": "f17f8f3d03c7",
       "food": "ха ха пиломеч делает брррр"
     }
@@ -203,6 +162,10 @@
     {
       "id": "f17f80026c9a",
       "userName": "Жилиман"
+    },
+    {
+      "id": "f17f934646d5",
+      "userName": "456"
     }
   ],
   "order": [

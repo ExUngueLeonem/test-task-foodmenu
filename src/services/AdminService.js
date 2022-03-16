@@ -1,6 +1,13 @@
 import $api from "../http";
+import GotService from "./GotService";
 
-import {MENU_URL} from '../const/const'
+import {MENU_URL,
+        ORDER_URL,
+        USERS_URL
+        } from '../const/const'
+
+
+const gotService = new GotService();
 export default class AdminService {
 
     static async getMenu() {
@@ -24,6 +31,14 @@ export default class AdminService {
 
     static async deleteFood(itemId) {
         return await $api.delete(MENU_URL + '/' + itemId)
+    }
+
+    static async getOrder() {
+        return await $api.get(ORDER_URL)
+    }
+
+    static async getUsers() {
+        return $api.get(USERS_URL)
     }
 
 }

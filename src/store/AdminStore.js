@@ -12,9 +12,27 @@ const MENU_URL = '/menu'
 class AdminStore {
 
     menu = [{
-        "id": 0,
-        "food": "Обосраный матрац"
+        id: 0,
+        food: "Обосраный матрац"
     }];
+
+    order = [{
+        id: 0,
+        userName: "Пертурабо",
+        userOrder: [{
+            id: 0,
+            food: "Великий суп",
+            count: 1
+        }]
+    }];
+
+    users = [{
+        email: "sdf@mail.com",
+        password: "4456",
+        userName: "Гость",
+        role: "guest",
+        id: 1
+    }]
 
     constructor() {
         makeAutoObservable(this);
@@ -22,6 +40,14 @@ class AdminStore {
 
     setMenu(menu) {
         this.menu = menu;
+    }
+
+    setOrder(order) {
+        this.order = order;
+    }
+
+    setUsers(users) {
+        this.users = users;
     }
 
     getMenu = async () => {
@@ -47,7 +73,7 @@ class AdminStore {
         try {
             const response = await AdminService.changeFood(itemId, foodInput)
             console.log('changeFood', response.data)
-            let result = this.menu.map( elem => {
+            let result = this.menu.map(elem => {
                 if (elem.id === itemId) {
                     return response.data
                 } else return elem
@@ -61,7 +87,7 @@ class AdminStore {
     deleteFood = async (itemId) => {
         try {
             await AdminService.deleteFood(itemId)
-            let result = this.menu.filter( elem => {
+            let result = this.menu.filter(elem => {
                 if (elem.id === itemId) return false
                 return true
             })
@@ -71,19 +97,47 @@ class AdminStore {
         }
     }
 
-    addUsers() {
-        console.log('addUsers')
+    getStaff = async () => {
+        try {
 
-    };
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+    }
 
-    deleteUsers() {
-        console.log('deleteUsers')
-    };
+    getUsers = async () => {
+        try {
+            const response = await AdminService.getUsers();
+            this.setUsers(response.data)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+    }
 
-    getUsers() {
-        console.log('getUsers')
-    };
 
+    getOrder = async () => {
+        try {
+            const response = await AdminService.getOrder()
+            this.setOrder(response.data)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+    }
+
+    /*     addUsers = async () => {
+            const response = await AdminService.getUsers();
+    
+            console.log('addUsers')
+        };
+    
+        deleteUsers() {
+            console.log('deleteUsers')
+        };
+    
+        getUsers() {
+            console.log('getUsers')
+        };
+     */
 }
 
 export default new AdminStore()

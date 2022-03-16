@@ -13,7 +13,8 @@ const AdminHeader = observer(({ active }) => {
         { id: 2, element: 'order', content: 'Заказы' },
     ]
 
-    let userName = AuthStore.user.name;
+    let userName = AuthStore.user.userName;
+    console.log(AuthStore)
 
     return (
         <>

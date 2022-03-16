@@ -3,6 +3,7 @@ import styles from './AdminStaffPage.module.scss';
 import AdminHeader from '../../components/AdminHeader';
 import ItemList from '../../components/ItemList';
 import GotService from '../../services/GotService';
+import AdminStore from '../../store/AdminStore';
 
 
 const AdminStaffPage = () => {
@@ -11,19 +12,19 @@ const AdminStaffPage = () => {
     const [staffInput, setStaffInput] = useState('');
     const gotService = new GotService;
 
+    const staffInputOnChangeHandler = (e) => {
+        setStaffInput(e.target.value);
+    };
+
     const refreshList = () => {
-        //gotService.fetchData('/staff')
-        gotService.fetchData('/users')
-            .then((res) => { setStaff(res.data) })
+        AdminStore.getUsers()
     }
 
     useEffect(
         refreshList, []
     );
 
-    const staffInputOnChangeHandler = (e) => {
-        setStaffInput(e.target.value);
-    };
+
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -61,7 +62,7 @@ const AdminStaffPage = () => {
             </form>
 
             <ItemList
-                item={staff}
+                item={AdminStore.users}
                 onPutHandler={onPutHandler}
                 onDeleteHandler={onDeleteHandler}
             />

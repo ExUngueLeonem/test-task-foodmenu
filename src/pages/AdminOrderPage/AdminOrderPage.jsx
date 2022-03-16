@@ -4,6 +4,7 @@ import AdminHeader from '../../components/AdminHeader';
 import GotService from '../../services/GotService';
 import ItemList from '../../components/ItemList';
 import { Context } from '../../components/Context';
+import AdminStore from '../../store/AdminStore';
 
 const AdminOrderPage = () => {
     const [order, setOrder] = useState([]);
@@ -11,26 +12,28 @@ const AdminOrderPage = () => {
     const [orderListId, setOrderListId] = useState(0);
     const gotService = new GotService;
 
+    const orderInputOnChangeHandler = (e) => {
+        setOrderInput(e.target.value);
+    };
+
     const refreshList = () => {
-        gotService.fetchData('/order')
-            .then((res) => { setOrder(res.data) })
+        AdminStore.getOrder()
     }
 
     useEffect(
         refreshList, []
     );
 
-    const orderInputOnChangeHandler = (e) => {
-        setOrderInput(e.target.value);
-    };
-
+   //удалить
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        const id = `f${(+new Date).toString(16)}`;
 
+/*         
+        const id = `f${(+new Date).toString(16)}`;
         gotService.postData('/order', { id: id, order: orderInput })
             .then(() => { refreshList() })
 
+*/
         setOrderInput('');
     };
 
@@ -54,8 +57,10 @@ const AdminOrderPage = () => {
         }
     }
 
-    let userName = order[orderListId] ? order[orderListId].userName : null;
-    let orderItem = order[orderListId] ? order[orderListId].userOrder : null;
+    let userName = AdminStore.order[orderListId] ? AdminStore.order[orderListId].userName : null;
+    let orderItem = AdminStore.order[orderListId] ? AdminStore.order[orderListId].userOrder : null;
+
+    console.log('userName userOrder', userName, orderItem)
 
     return (
         <div className={styles.container}>
@@ -82,13 +87,13 @@ const AdminOrderPage = () => {
                         changeble={true}
                         btn_delete={false}
                         btn_put={false}
-                        item={order}
+                        item={AdminStore.order}
                         onPutHandler={onPutHandler}
                         onDeleteHandler={onDeleteHandler}
                         onPickHandler={onPickHandler}
                     />
                 </div>
-                {!!order[0] && <div className={styles.flex_container__right}>
+                {!!AdminStore.order[0] && <div className={styles.flex_container__right}>
                     <ItemList
                         item={orderItem ? orderItem : null}/* нужно сделать выбор, кого передавать */
                         onPutHandler={onPutHandler}
