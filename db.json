@@ -83,20 +83,6 @@
       "userName": "Клоунич",
       "role": "user",
       "id": "f17f93d559b7"
-    },
-    {
-      "email": "sdsffafgh@asdfasdf",
-      "password": "$2a$10$kbmOE8IfvFprbaYJ1dRGMuWr5XEuhY4aRyv9Ou2wNiKqA.X3BW8q.",
-      "userName": "asdfasdf",
-      "role": "user",
-      "id": "f17f93daca8d"
-    },
-    {
-      "email": "gsdfger@asffertg/com",
-      "password": "$2a$10$412U6t09EFyUaHM/aO49PuSV4Iy9dErG40Tgv07Ktq1Nr4PmPOvjG",
-      "userName": "Легионер f17f93dc5b07",
-      "role": "user",
-      "id": "f17f93dc5b07"
     }
   ],
   "menu": [

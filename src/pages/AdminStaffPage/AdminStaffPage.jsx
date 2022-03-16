@@ -56,14 +56,9 @@ const AdminStaffPage = observer(() => {
         setUserPass('')
     }
 
-    const onPutHandler = (itemId) => {
-        gotService.putData('/staff', itemId, { id: itemId, userName: staffInput })
-            .then(() => { refreshList() })
-        setStaffInput('');
-    }
-
+    //удаление работает
     const onDeleteHandler = (itemId) => {
-        gotService.deleteData('/staff', itemId)
+        gotService.deleteData('/users', itemId)
             .then(() => { refreshList() })
     }
 
@@ -75,7 +70,6 @@ const AdminStaffPage = observer(() => {
                     <ItemList
                         btn_put={false}
                         item={AdminStore.users}
-                        onPutHandler={onPutHandler}
                         onDeleteHandler={onDeleteHandler}
                     />
 

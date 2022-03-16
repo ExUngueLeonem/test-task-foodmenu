@@ -3,8 +3,8 @@ import styles from "./ItemList.module.scss";
 
 const ItemList = ({
     item,
-    onDeleteHandler,
-    onPutHandler,
+    onDeleteHandler = () => { },
+    onPutHandler = () => { },
     onPickHandler = () => { },
     btn_put = true,
     btn_delete = true

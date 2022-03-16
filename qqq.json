@@ -59,9 +59,30 @@
     {
       "email": "qwerty@qwerty.com",
       "password": "$2a$10$thz5PKNDjv4H2xOyXTiXmOVVh/GUhO7IV2TKqvS6289uBx8e8zwq6",
-      "userName": "Настоящий Император",
+      "userName": "Император Человечества",
       "role": "admin",
       "id": 10
+    },
+    {
+      "email": "dfgh@dfgh.com",
+      "password": "$2a$10$qxCDfNZxK5aTiFO5vM8B6e7Nzi6h84DeqVoXIlvhchuqPAKj2mCrq",
+      "userName": "Легионер f17f93c925d6",
+      "role": "user",
+      "id": "f17f93c925d6"
+    },
+    {
+      "email": "yuioyuio@sdftgsdfr",
+      "password": "$2a$10$kH6iEeTPAmsS37GsRHaCkO8nN152l415E25iaU/X6UaRFr4fQXs92",
+      "userName": "Легионер f17f93d39477",
+      "role": "user",
+      "id": "f17f93d39477"
+    },
+    {
+      "email": "dfgsdfg@dfsgsdjsj.com",
+      "password": "$2a$10$BrsvLnSj.BCZPqdQryTTZu6teQTrj68/Bs24xbvgD9wEULFFMtLG2",
+      "userName": "Клоунич",
+      "role": "user",
+      "id": "f17f93d559b7"
     }
   ],
   "menu": [
@@ -116,6 +137,18 @@
     {
       "id": "f17f89b57144",
       "food": "Еще один великий суп"
+    },
+    {
+      "id": "f17f8e9f808b",
+      "food": "Жеваный крот"
+    },
+    {
+      "id": "f17f8ea0b342",
+      "food": "Банан"
+    },
+    {
+      "id": "f17f8ea14b42",
+      "food": "Червяк Анатолий"
     }
   ],
   "staff": [
@@ -146,6 +179,14 @@
     {
       "id": "f17f80026c9a",
       "userName": "Жилиман"
+    },
+    {
+      "id": "f17f934646d5",
+      "userName": "456"
+    },
+    {
+      "id": "f17f938e271b",
+      "userName": "123"
     }
   ],
   "order": [
@@ -153,7 +194,7 @@
       "id": 0,
       "userName": "Пертурабо",
       "userOrder": [
-        { 
+        {
           "id": 321,
           "food": "Великий суп",
           "count": 1
