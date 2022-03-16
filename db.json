@@ -62,6 +62,41 @@
       "userName": "Император Человечества",
       "role": "admin",
       "id": 10
+    },
+    {
+      "email": "dfgh@dfgh.com",
+      "password": "$2a$10$qxCDfNZxK5aTiFO5vM8B6e7Nzi6h84DeqVoXIlvhchuqPAKj2mCrq",
+      "userName": "Легионер f17f93c925d6",
+      "role": "user",
+      "id": "f17f93c925d6"
+    },
+    {
+      "email": "yuioyuio@sdftgsdfr",
+      "password": "$2a$10$kH6iEeTPAmsS37GsRHaCkO8nN152l415E25iaU/X6UaRFr4fQXs92",
+      "userName": "Легионер f17f93d39477",
+      "role": "user",
+      "id": "f17f93d39477"
+    },
+    {
+      "email": "dfgsdfg@dfsgsdjsj.com",
+      "password": "$2a$10$BrsvLnSj.BCZPqdQryTTZu6teQTrj68/Bs24xbvgD9wEULFFMtLG2",
+      "userName": "Клоунич",
+      "role": "user",
+      "id": "f17f93d559b7"
+    },
+    {
+      "email": "sdsffafgh@asdfasdf",
+      "password": "$2a$10$kbmOE8IfvFprbaYJ1dRGMuWr5XEuhY4aRyv9Ou2wNiKqA.X3BW8q.",
+      "userName": "asdfasdf",
+      "role": "user",
+      "id": "f17f93daca8d"
+    },
+    {
+      "email": "gsdfger@asffertg/com",
+      "password": "$2a$10$412U6t09EFyUaHM/aO49PuSV4Iy9dErG40Tgv07Ktq1Nr4PmPOvjG",
+      "userName": "Легионер f17f93dc5b07",
+      "role": "user",
+      "id": "f17f93dc5b07"
     }
   ],
   "menu": [
@@ -128,10 +163,6 @@
     {
       "id": "f17f8ea14b42",
       "food": "Червяк Анатолий"
-    },
-    {
-      "id": "f17f8f3d03c7",
-      "food": "ха ха пиломеч делает брррр"
     }
   ],
   "staff": [
@@ -166,6 +197,10 @@
     {
       "id": "f17f934646d5",
       "userName": "456"
+    },
+    {
+      "id": "f17f938e271b",
+      "userName": "123"
     }
   ],
   "order": [

@@ -29,16 +29,26 @@ class AuthStore {
 
     }
 
-    async registration(email, password) {
+    async registration(email, password, userName) {
         try {
-            const response = await AuthService.registration(email, password)
+            const response = await AuthService.registration(email, password, userName)
             console.log(response);
             localStorage.setItem('token', response.data.accessToken)
-            this.setUser(response.data.user)
+            //this.setUser(response.data.user)
         } catch (e) {
             console.log(e.response?.data?.message)
         }
     }
+
+    async addToStaffList(email, password, userName) {
+        try {
+            const response = await AuthService.registration(email, password, userName)
+            console.log(response);
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+    }
+
 
     logout() {
         console.log('logout')

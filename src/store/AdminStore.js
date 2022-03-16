@@ -108,7 +108,11 @@ class AdminStore {
     getUsers = async () => {
         try {
             const response = await AdminService.getUsers();
-            this.setUsers(response.data)
+            const result = response.data.filter( elem => {
+                if (elem.role !== 'admin') return elem
+            })
+            this.setUsers(result)
+            
         } catch (e) {
             console.log(e.response?.data?.message)
         }

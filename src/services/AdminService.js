@@ -41,4 +41,6 @@ export default class AdminService {
         return $api.get(USERS_URL)
     }
 
+    
+
 }
