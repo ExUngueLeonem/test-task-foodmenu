@@ -7,9 +7,9 @@ import GotService from '../../services/GotService';
 import styles from './UserOrderPage.module.scss';
 
 import AuthStore from '../../store/AuthStore';
+import { observer } from 'mobx-react-lite';
 
-const UserOrderPage = () => {
-    const [context, setContext] = useContext(Context);
+const UserOrderPage = observer(() => {
 
     const [order, setOrder] = useState([]);
 
@@ -99,5 +99,5 @@ const UserOrderPage = () => {
             </div>
         </div>
     );
-};
+});
 export default UserOrderPage;

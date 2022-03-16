@@ -11,10 +11,26 @@
     @include shadow;
 }
 
+.flex_container {
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+        width: 49%;
+    }
+
+    &__right {
+        width: 49%;
+        padding-top: 30px;
+    }
+}
+
+
 .menu_input {
     width: 100%;
     font-size: 18px;
     @include input;
+    margin-top: 8px;
 }
 
 .menu_btn_container {
@@ -24,7 +40,7 @@
 
 .menu_btn {
     @include button_primary;
-    padding: 15px;
+    padding: 10px;
     display: block;
     font-size: 20px;
     min-width: 250px;
