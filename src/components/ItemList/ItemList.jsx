@@ -6,6 +6,8 @@ const ItemList = ({
     onDeleteHandler = () => { },
     onPutHandler = () => { },
     onPickHandler = () => { },
+    onPostHandler = () => { },
+    btn_post = false,
     btn_put = true,
     btn_delete = true
 }) => {
@@ -25,6 +27,8 @@ const ItemList = ({
                         <span>{itemItem.food || itemItem.userName}</span>
                         {btn_delete && <div className={styles.btn_delete} onClick={(e) => onDeleteHandler(itemItem.id)}></div>}
                         {btn_put && <div className={styles.btn_put} onClick={(e) => onPutHandler(itemItem.id)}>изменить</div>}
+                        {btn_post && <div className={styles.btn_put} onClick={(e) => onPostHandler(itemItem.id)}>добавить</div>}
+
                     </div>
                 )
             })}

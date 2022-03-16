@@ -22,13 +22,6 @@
       "id": 3
     },
     {
-      "email": "petting@mail.com",
-      "password": "$2a$10$cms7907VeIgRQTXeSgvS/uqO16CZFIzg/rCnFL3h7UCVWzbjAugbW",
-      "userName": "Наводчик Петр",
-      "role": "user",
-      "id": 4
-    },
-    {
       "email": "moonwolf@mail.com",
       "password": "$2a$10$Fe4M0pGFIy3NdZz2M5MZxOwbvP09NHMuKYSgYL5GO5oBXDN9fl.ie",
       "userName": "Капитан роты Лунных Волков",
@@ -83,6 +76,13 @@
       "userName": "Клоунич",
       "role": "user",
       "id": "f17f93d559b7"
+    },
+    {
+      "email": "dfgsdfg@sdfgsdfg.com",
+      "password": "$2a$10$UmXOt6MZJAPeMtwiX7ClRO01lQP4Htwc9NvCszFwlccJb3Qq9oplK",
+      "userName": "Легионер f17f93f463b9",
+      "role": "user",
+      "id": "f17f93f463b9"
     }
   ],
   "menu": [
@@ -149,6 +149,10 @@
     {
       "id": "f17f8ea14b42",
       "food": "Червяк Анатолий"
+    },
+    {
+      "id": "f17f940c07fd",
+      "food": "Суп Харчо"
     }
   ],
   "staff": [
@@ -191,7 +195,7 @@
   ],
   "order": [
     {
-      "id": 0,
+      "id": 2,
       "userName": "Пертурабо",
       "userOrder": [
         {
@@ -200,7 +204,7 @@
           "count": 1
         },
         {
-          "id": 987,
+          "id": 974,
           "food": "Компот из жопы тиранида",
           "count": 2
         },
@@ -208,6 +212,26 @@
           "id": 223,
           "food": "слезы грешника",
           "count": 4
+        },
+        {
+          "id": 132,
+          "food": "Великий суп",
+          "count": 12
+        },
+        {
+          "id": 988,
+          "food": "Кадианское пюре, в котором даже ложка стоит",
+          "count": 1
+        },
+        {
+          "id": 987,
+          "food": "Водка за \"честь и отвагу\"",
+          "count": 3
+        },
+        {
+          "id": 456,
+          "food": "Пирожок с ничем",
+          "count": 1
         }
       ]
     },
@@ -228,7 +252,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": 0,
       "userName": "Наводчик Петр",
       "userOrder": [
         {
@@ -289,7 +313,7 @@
           "count": 1
         },
         {
-          "id": 987,
+          "id": 154,
           "food": "Водка за \"честь и отвагу\"",
           "count": 3
         },

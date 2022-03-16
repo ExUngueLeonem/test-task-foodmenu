@@ -41,6 +41,8 @@ export default class AdminService {
         return $api.get(USERS_URL)
     }
 
-    
+    static async deleteUsers(itemId) {
+        return $api.delete(USERS_URL + '/' + itemId)
+    }    
 
 }

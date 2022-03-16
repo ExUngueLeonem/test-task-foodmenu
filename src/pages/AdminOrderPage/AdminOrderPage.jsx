@@ -21,7 +21,7 @@ const AdminOrderPage = () => {
     }
 
     useEffect(
-        refreshList, []
+        AdminStore.getOrder, []
     );
 
    //удалить

@@ -3,29 +3,17 @@ import { observer } from 'mobx-react-lite';
 
 import styles from './AdminStaffPage.module.scss';
 
-import GotService from '../../services/GotService';
 import AdminStore from '../../store/AdminStore';
+import AuthStore from '../../store/AuthStore';
 
 import AdminHeader from '../../components/AdminHeader';
 import ItemList from '../../components/ItemList';
-import AuthService from '../../services/AuthService';
-import AuthStore from '../../store/AuthStore';
-
-
-
 
 const AdminStaffPage = observer(() => {
-
-    const [staffInput, setStaffInput] = useState('');
 
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPass, setUserPass] = useState('');
-
-
-
-
-    const gotService = new GotService;
 
     const refreshList = () => {
         AdminStore.getUsers()
@@ -35,31 +23,17 @@ const AdminStaffPage = observer(() => {
         refreshList, []
     );
 
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-        //добавление/изменение сотрудника здесь мы должны вводить данные сотрудника
-        //потом регнуть его
-
-        const id = `f${(+new Date).toString(16)}`;
-
-        gotService.postData('/staff', { id: id, userName: staffInput })
-            .then(() => { refreshList() })
-
-        setStaffInput('');
-    };
-
     const onRegistration = async (userEmail, userPass, userName) => {
         await AuthStore.addToStaffList(userEmail, userPass, userName)
-        await AdminStore.getUsers()
-        setUserName('')
-        setUserEmail('')
-        setUserPass('')
+        await AdminStore.getUsers();
+        setUserName('');
+        setUserEmail('');
+        setUserPass('');
     }
 
-    //удаление работает
-    const onDeleteHandler = (itemId) => {
-        gotService.deleteData('/users', itemId)
-            .then(() => { refreshList() })
+    const onDeleteHandler = async (itemId) => {
+        await AdminStore.deleteUser(itemId);
+        await AdminStore.getUsers();
     }
 
     return (
@@ -72,11 +46,9 @@ const AdminStaffPage = observer(() => {
                         item={AdminStore.users}
                         onDeleteHandler={onDeleteHandler}
                     />
-
-
                 </div>
                 <div className={styles.flex_container__right}>
-                    Форма добавления сотрудника
+                    Форма регистрации сотрудника
                     <div>
                         <input
                             className={[styles.menu_input].join(' ')}
@@ -94,7 +66,7 @@ const AdminStaffPage = observer(() => {
                         ></input>
                         <input
                             className={[styles.menu_input].join(' ')}
-                            type="text"
+                            type="password"
                             placeholder='введите пароль сотрудника'
                             value={userPass}
                             onChange={(e) => { setUserPass(e.target.value) }}
@@ -107,12 +79,8 @@ const AdminStaffPage = observer(() => {
                             </button>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
-
         </div>
     );
 });

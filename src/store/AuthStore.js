@@ -6,7 +6,7 @@ class AuthStore {
         email: "none",
         userName: "Загрузка...",
         role: "guest",
-        id: 999
+        id: 0
     }
 
     setUser(user) {

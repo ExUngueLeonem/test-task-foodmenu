@@ -1,13 +1,5 @@
-import {
-    makeAutoObservable
-} from "mobx"
-import GotService from '../services/GotService';
-import $api from "../http";
+import { makeAutoObservable } from "mobx"
 import AdminService from "../services/AdminService";
-
-const gotService = new GotService();
-
-const MENU_URL = '/menu'
 
 class AdminStore {
 
@@ -38,17 +30,9 @@ class AdminStore {
         makeAutoObservable(this);
     }
 
-    setMenu(menu) {
-        this.menu = menu;
-    }
-
-    setOrder(order) {
-        this.order = order;
-    }
-
-    setUsers(users) {
-        this.users = users;
-    }
+    setMenu(menu) { this.menu = menu }
+    setOrder(order) { this.order = order }
+    setUsers(users) { this.users = users }
 
     getMenu = async () => {
         try {
@@ -97,27 +81,35 @@ class AdminStore {
         }
     }
 
-    getStaff = async () => {
-        try {
-
-        } catch (e) {
-            console.log(e.response?.data?.message)
+    /*  это если у нас список работников отдельно   
+        getStaff = async () => {
+            try {
+    
+            } catch (e) {
+                console.log(e.response?.data?.message)
+            }
         }
-    }
+     */
 
     getUsers = async () => {
         try {
             const response = await AdminService.getUsers();
-            const result = response.data.filter( elem => {
+            const result = response.data.filter(elem => {
                 if (elem.role !== 'admin') return elem
             })
             this.setUsers(result)
-            
         } catch (e) {
             console.log(e.response?.data?.message)
         }
     }
 
+    deleteUser = async (itemId) => {
+        try {
+            await AdminService.deleteUsers(itemId)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+    }
 
     getOrder = async () => {
         try {
@@ -128,20 +120,6 @@ class AdminStore {
         }
     }
 
-    /*     addUsers = async () => {
-            const response = await AdminService.getUsers();
-    
-            console.log('addUsers')
-        };
-    
-        deleteUsers() {
-            console.log('deleteUsers')
-        };
-    
-        getUsers() {
-            console.log('getUsers')
-        };
-     */
 }
 
 export default new AdminStore()
