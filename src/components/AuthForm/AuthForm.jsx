@@ -10,6 +10,7 @@ const AuthForm = observer(() => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [userName, setUserName] = useState('')
 
     const inputLoginHandler = (e) => {
         setEmail(e.target.value)
@@ -17,6 +18,10 @@ const AuthForm = observer(() => {
 
     const inputPasswordHandler = (e) => {
         setPassword(e.target.value)
+    }
+
+    const inputUserNameHandler = (e) => {
+        setUserName(e.target.value)
     }
 
     const redirect = () => {
@@ -35,7 +40,7 @@ const AuthForm = observer(() => {
     }
 
     const registrationHandler = (e) => {
-        AuthStore.registration(email, password)
+        AuthStore.registration(email, password, userName)
         setEmail('')
         setPassword('')
     }
@@ -62,6 +67,13 @@ const AuthForm = observer(() => {
                         placeholder="Пароль"
                         value={password}
                         onChange={(e) => { inputPasswordHandler(e) }} />
+                    <input
+                        type="email"
+                        className={styles.form_field}
+                        placeholder="Имя пользователя"
+                        value={userName}
+                        onChange={(e) => { inputUserNameHandler(e) }} />
+
                     <p><a href="#">Забыли пароль?</a></p>
                     <button onClick={(e) => { loginHandler(e) }}>Вход</button>
                     <button onClick={(e) => { registrationHandler(e) }}>Регистрация</button>
